@@ -1,11 +1,19 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
+
     
   def index
+    if logged_in?
+      @user = current_user
+      @message = current_user.messages.build
       @messages = Message.order(id: :desc).page(params[:page])
+    else
+      @messages = Message.order(id: :desc).page(params[:page])
+    end
   end
 
   def show
+    @user = User.find_by(user_id: params[:user_id])
   end
 
   def new
@@ -13,7 +21,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(message_params)
+    @message = current_user.messages.build(message_params)
     
     if @message.save
       flash[:success] = "Messageが正常に投稿されました。"
@@ -54,4 +62,5 @@ class MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(:content, :title)
   end
+  
 end
