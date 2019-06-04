@@ -26,4 +26,24 @@ class User < ApplicationRecord
   def following?(other_user)
     self.followings.include?(other_user)
   end
+  
+  def feed_messages
+    Message.where(user_id: self.following_ids + [self.id])
+  end
+
+  has_many :favorites
+  has_many :favmessages, through: :favorites, source: :message
+  
+  def favorite(message)
+    favorites.find_or_create_by(message_id: message.id)
+  end
+
+  def unfavorite(message)
+    favorite = favorites.find_by(message_id: message.id)
+    favorite.destroy if favorite
+  end
+
+  def favmessage?(message)
+    self.favmessages.include?(message)
+  end
 end

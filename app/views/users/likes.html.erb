@@ -21,6 +21,6 @@
             <li class="<%= 'active' if current_page?(followers_user_path(@user)) %>"><%= link_to followers_user_path(@user) do %>フォロワー <span class="badge"><%= @count_followers %></span><% end %></li>
             <li class="<%= 'active' if current_page?(likes_user_path(@user)) %>"><%= link_to likes_user_path(@user) do %>お気に入り <span class="badge"><%= @count_favorites %></span><% end %></li>
         </ul>
-        <%= render 'messages/user_messages', messages: @messages %>
+        <%= render 'messages/user_messages', messages: @favmessages %>
     </div>
 </div>

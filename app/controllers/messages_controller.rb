@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
     if logged_in?
       @user = current_user
       @message = current_user.messages.build
-      @messages = Message.order(id: :desc).page(params[:page])
+      @messages = current_user.feed_messages.order(id: :desc).page(params[:page])
     else
       @messages = Message.order(id: :desc).page(params[:page])
     end
