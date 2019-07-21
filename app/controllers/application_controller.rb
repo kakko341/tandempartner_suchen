@@ -12,9 +12,9 @@ class ApplicationController < ActionController::Base
 	end
 	
 	def counts(user)
-    	@count_messages = user.messages.count
-    	@count_followings = user.followings.count
-    	@count_followers = user.followers.count
+    @count_messages = user.messages.count
+    @count_followings = user.followings.count
+    @count_followers = user.followers.count
 		@count_favorites = user.favmessages.count
 	end
 end

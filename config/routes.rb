@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  root to: 'messages#index'
+  root to: 'top_pages#home'
 
   resources :messages
   
+  get 'top_pages/home'
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
