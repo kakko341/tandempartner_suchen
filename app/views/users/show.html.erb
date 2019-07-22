@@ -2,15 +2,22 @@
     <aside class="col-xs-6">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><%= @user.name %></h3>
+                <h2 class="panel-title"><%= @user.name %></h2>
             </div>
             <div class="panel-body">
                 <img class="media-object img-rounded img-responsive" src="<%= gravatar_url(@user, { size: 150 }) %>" alt="">
             </div>
+            <dive>
+                <h3><%= @user.speak %></h3>
+                <h3><%= @user.offer %></h3>
+                <h3><%= @user.place %></h3>
+                <h3><%= @user.age %></h3>
+            </dive>
         </div>
         <% if current_user == @user %>
             <%= link_to  'New Post', new_message_path, class: 'btn btn-default' %>
             <%= render 'relationships/follow_button', user: @user %>
+            <%= link_to  'Account delete', @user, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-default' %>
         <% end %>
         <%= render 'relationships/follow_button', user: @user %>
     </aside>

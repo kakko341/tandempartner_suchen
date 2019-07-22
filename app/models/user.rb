@@ -4,12 +4,13 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   has_secure_password
 
-  has_many :messages
-  has_many :relationships
+  has_many :messages, dependent: :destroy
+  has_many :relationships, dependent: :destroy
   has_many :followings, through: :relationships, source: :follow
-  has_many :reverses_of_relationship, class_name: 'Relationship', foreign_key: 'follow_id'
+  has_many :reverses_of_relationship, class_name: 'Relationship', foreign_key: 'follow_id', dependent: :destroy
   has_many :followers, through: :reverses_of_relationship, source: :user
 
   def follow(other_user)
@@ -31,7 +32,7 @@ class User < ApplicationRecord
     Message.where(user_id: self.following_ids + [self.id])
   end
 
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :favmessages, through: :favorites, source: :message
   
   def favorite(message)

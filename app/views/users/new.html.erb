@@ -1,5 +1,5 @@
 <div class="text-center">
-  <h1>登録</h1>
+  <h1>Sign up</h1>
 </div>
 
 <div class="row">
@@ -10,26 +10,26 @@
       <%= render 'layouts/error_messages', model: f.object  %>
       
       <div class="form-group">
-        <%= f.label :name, '名前' %>
+        <%= f.label :name, 'Name' %>
         <%= f.text_field :name, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :email, 'メールアドレス' %>
+        <%= f.label :email, 'E-mail' %>
         <%= f.email_field :email, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :password, 'パスワード' %>
+        <%= f.label :password, 'Password' %>
         <%= f.password_field :password, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :password_confirmation, 'パスワード再入力' %>
+        <%= f.label :password_confirmation, 'Password confirmation' %>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
 
-      <%= f.submit '登録', class: 'btn btn-primary btn-block' %>
+      <%= f.submit 'Save', class: 'btn btn-primary btn-block' %>
     <% end %>
   </div>
 </div>
