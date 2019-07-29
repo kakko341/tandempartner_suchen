@@ -59,7 +59,7 @@ class MessagesController < ApplicationController
   
   #strong parameter
   def message_params
-    params.require(:message).permit(:content, :title)
+    params.require(:message).permit(:content, :title, :photo)
   end
   
 end

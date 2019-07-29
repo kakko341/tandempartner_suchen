@@ -8,12 +8,13 @@
         <div>
           <h4><%= message.title %></h4>
           <p><%= message.content %></p>
+          <%= image_tag message.photo.url if message.photo? %>
           <%= render 'favorites/like_button', message: message %>
         </div>
         <div>
           <% if current_user == message.user %>
             <%= link_to 'Edit', edit_message_path(message), class: 'btn btn-default btn-xs' %>
-            <%= link_to 'Delete', message, method: :delete, data: { confirm: "本当に削除しますか?" }, class: 'btn btn-danger btn-xs' %>
+            <%= link_to 'Delete', message, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-xs' %>
             <span class="text-muted"><%= message.created_at %></span>
           <% end %>
         </div>
