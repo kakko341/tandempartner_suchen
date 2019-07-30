@@ -1,17 +1,23 @@
 <% provide(:title, 'Home') %>
 <% if logged_in? %>
   <div class="row">
-    <aside class="col-md-4">
-      <%= form_for(@message) do |f| %>
-        <div class="group-form">
-          <%= f.text_field :title, class: 'form-control', rows: 5 %>
-          <%= f.text_area :content, class: 'form-control', rows: 5 %>
-          <%= f.file_field :photo, class: 'form-control', rows: 5 %>
+    <aside class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title"><%= @user.name %></h2>
         </div>
-        <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+        <div class="panel-body">
+            <img class="media-object img-rounded img-responsive" src="<%= gravatar_url(@user, { size: 150 }) %>" alt="">
+        </div>
+      </div>
+      <% if current_user == @user %>
+          <%= link_to  'New Post', new_message_path, class: 'btn btn-default' %>
+          <%= render 'relationships/follow_button', user: @user %>
+          <%= link_to  'Account delete', @user, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-default' %>
       <% end %>
+      <%= render 'relationships/follow_button', user: @user %>
     </aside>
-    <div class="col-xs-8">
+    <div class="col-xs-9">
       <%= render 'messages/main', messages: @messages %>
     </div>
   </div>
