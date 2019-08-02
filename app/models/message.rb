@@ -1,5 +1,6 @@
 class Message < ApplicationRecord
     belongs_to :user
+    has_many_attached :images
         
     validates :content, presence: true, length: {maximum: 255}
     validates :title, presence: true, length: {maximum: 255}

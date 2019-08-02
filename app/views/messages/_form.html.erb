@@ -21,6 +21,11 @@
         <%= f.text_field :content, class: 'form-control' %>
       </div>
       
+      <div class="field">
+        <%= f.label :images %>
+        <%= f.file_field :images, multiple: true %>
+      </div>
+      
       <%= f.submit '投稿', class: 'btn btn-primary' %>
       
     <% end %>

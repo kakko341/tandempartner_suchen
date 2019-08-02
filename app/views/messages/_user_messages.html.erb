@@ -8,6 +8,11 @@
         <div>
           <h4><%= message.title %></h4>
           <p><%= message.content %></p>
+          <% if message.images.attached? %>
+            <% message.images.each do |image| %>
+              <%= image_tag image %> <br>
+            <% end %>
+          <% end %>
           <%= render 'favorites/like_button', message: message %>
         </div>
         <div>
