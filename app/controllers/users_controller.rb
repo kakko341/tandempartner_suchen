@@ -3,7 +3,7 @@ class UsersController < ApplicationController
                                                 :edit, :update, :destroy]
   
   def index
-    @users = User.all.page(params[:page])
+    @users = User.all.page(params[:page]).search(params[:search])
   end
 
   def show

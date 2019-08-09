@@ -22,7 +22,7 @@ User.create!(name:  "Marius",
   speak = Faker::Nation.nationality
   offer = Faker::Nation.language 
   place = Faker::Address.city
-  age = Faker::Lorem.words
+  age = Faker::Number.within(range: 1..99)
   User.create!(name:  name,
                email: email,
                password:              password,
@@ -35,9 +35,9 @@ end
 
 users = User.order(:created_at).take(6)
 50.times do
-	title = Faker::Lorem.sentence(5)
-  content = Faker::Lorem.sentence(5)
-  users.each { |user| user.messages.create!(content: content, title: title) }
+	title = Faker::Lorem.sentence(word_count: 2)
+  content = Faker::Lorem.sentence
+  users.each { |user| user.messages.create!(title: title, content: content) }
 end
 
 users = User.all
