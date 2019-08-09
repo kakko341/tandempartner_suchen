@@ -1,6 +1,7 @@
 <% provide(:title, 'Home') %>
 <% if logged_in? %>
   <div class="row">
+<<<<<<< HEAD
       <aside class="col-xs-3">
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -29,6 +30,27 @@
           <%= paginate @feed_items %>
         <% end %>
       </div>
+=======
+    <aside class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title"><%= @user.name %></h2>
+        </div>
+        <div class="panel-body">
+            <img class="media-object img-rounded img-responsive" src="<%= gravatar_url(@user, { size: 150 }) %>" alt="">
+        </div>
+      </div>
+      <% if current_user == @user %>
+          <%= link_to  'New Post', new_message_path, class: 'btn btn-default' %>
+          <%= render 'relationships/follow_button', user: @user %>
+          <%= link_to  'Account delete', @user, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-default' %>
+      <% end %>
+      <%= render 'relationships/follow_button', user: @user %>
+    </aside>
+    <div class="col-xs-9">
+      <%= render 'messages/main', messages: @messages %>
+    </div>
+>>>>>>> 72aa981102d525f0f93f0c887601db612ffc8fc3
   </div>
 <% else %>
   <div class="center jumbotron">
@@ -36,11 +58,14 @@
       <h1>Tandempartner Suchen Site</h1>
       <%= link_to 'Sign Up Now!', signup_path, class: 'btn btn-lg btn-primary' %>
     </div>
+<<<<<<< HEAD
     <br>
     <%= form_for(:session, url: login_path) do |f| %>
       <%= f.hidden_field :email, value: User.find(2).email %>
       <%= f.hidden_field :password, value: "password" %>
       <%= f.submit "Log in as a test user", class:"btn btn-success mt-3 w-100"%>
     <% end %>
+=======
+>>>>>>> 72aa981102d525f0f93f0c887601db612ffc8fc3
   </div>
 <% end %>
