@@ -18,22 +18,14 @@
     
       <div class="form-group">
         <%= f.label :content, 'Post' %>
-<<<<<<< HEAD
         <%= f.text_area :content, class: 'form-control' %>
       </div>
       
       <div class="field">
         <%= f.label :images %>
-        <%= f.file_field :images, multiple: true %>
+        <%= f.file_field :images, multiple: true, accept: 'image/jpeg,image/gif,image/png' %>
       </div>
       
-=======
-        <%= f.text_area :content, placeholder: "Write what you're looking for here", class: 'form-control' %>
-      </div>
-      
-      <%= f.file_field :photo, accept: 'image/jpeg,image/gif,image/png' %>
-
->>>>>>> 72aa981102d525f0f93f0c887601db612ffc8fc3
       <%= f.submit 'Save', class: 'btn btn-primary' %>
       
     <% end %>
