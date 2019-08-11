@@ -38,7 +38,7 @@
     </div>
     <br>
     <%= form_for(:session, url: login_path) do |f| %>
-      <%= f.hidden_field :email, value: User.find(1).email %>
+      <%= f.hidden_field :email, value: "marius@gmail.com" %>
       <%= f.hidden_field :password, value: "marius" %>
       <%= f.submit "Log in as a test user", class:"btn btn-success mt-3 w-100"%>
     <% end %>
