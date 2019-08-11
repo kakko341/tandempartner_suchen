@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 2019_08_05_135609) do
     t.datetime "updated_at", null: false
     t.string "title"
     t.bigint "user_id"
-    t.string "photo"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
