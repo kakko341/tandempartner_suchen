@@ -4,7 +4,7 @@
       <aside class="col-xs-3">
         <div class="panel panel-default">
           <div class="panel-heading">
-              <h2 class="panel-title"><%= @user.name %></h2>
+              <h2 class="panel-title"><%= link_to @user.name, @user %></h2>
           </div>
           <div class="panel-body">
               <img class="media-object img-rounded img-responsive" src="<%= gravatar_url(@user, { size: 150 }) %>" alt="">

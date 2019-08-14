@@ -60,4 +60,20 @@ class User < ApplicationRecord
     end
   end
   
+  has_many :comments, dependent: :destroy
+  has_many :comment_messages, through: :comments, source: :message
+  
+  def comment(message)
+    self.comments.find_or_create_by(message_id: message.id)
+  end
+  
+  def uncomment(message)
+    comment = self.comments.find_by(message_id: message.id)
+    comment.destroy if comment
+  end
+  
+  def comment?(message)
+    self.comment_messages.include?(message)
+    
+  end
 end

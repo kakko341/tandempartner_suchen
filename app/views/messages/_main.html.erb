@@ -1,30 +1,37 @@
 <ul class="media-list">
-    <% if @feed_items.any? %>
-        <% @feed_items.each do |message| %>
-        <li class="media">
-          <div class="media-left">
-            <img class="media-object img-rounded" src="<%= gravatar_url(message.user, { size: 70 }) %>" alt="">
-          </div>
-          <div class="media-body">
-            <div>
-              <h4><%= message.title %></h4>
-              <p><%= message.content %></p>
-              <% if message.images.attached? %>
-                <% message.images.each do |image| %>
-                  <%= image_tag image.variant(resize: "250x250") %> <br>
-                <% end %>
+  <% if @feed_items.any? %>
+    <% @feed_items.each do |message| %>
+      <li class="media">
+        <div class="media-left">
+          <img class="media-object img-rounded" src="<%= gravatar_url(message.user, { size: 70 }) %>" alt="">
+        </div>
+        <div class="media-body">
+          <div>
+            <h4><%= message.title %></h4>
+            <p><%= message.content %></p>
+            <% if message.images.attached? %>
+              <% message.images.each do |image| %>
+                <%= image_tag image.variant(resize: "250x250") %> <br>
               <% end %>
-              <span class="text-muted"><%= message.created_at %></span>
-              <%= render 'favorites/like_button', message: message %>
-            </div>
-            <div>
-              <% if current_user == message.user %>
-                <%= link_to 'Edit', edit_message_path(message), class: 'btn btn-default btn-xs' %>
-                <%= link_to 'Delete', message, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
-              <% end %>
-            </div>
+            <% end %>
+            <span class="text-muted"><%= message.created_at %></span>
+            <%= render 'favorites/like_button', message: message %>
           </div>
-        </li>
-        <% end %>
+          <div>
+            <% if current_user == message.user %>
+              <%= link_to 'Edit', edit_message_path(message), class: 'btn btn-default btn-xs' %>
+              <%= link_to 'Delete', message, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
+            <% else %>
+              <%= link_to 'Reply', new_message_comment_path(message), class: 'btn btn-primary btn-xs' %>
+            <% end %>
+          </div>
+          <div>
+            <% message.comments.order(updated_at: :desc).each do |comment| %>
+              <h5><span><%= link_to comment.user.name, comment.user %></span>: <%= comment.content %>: <%= comment.updated_at %> <%= link_to 'Delete', comment, method: :delete if comment.user == current_user %></h5>
+            <% end %>
+          </div>
+        </div>
+      </li>
     <% end %>
+  <% end %>
 </ul>

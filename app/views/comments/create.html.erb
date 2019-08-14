@@ -1,0 +1,16 @@
+<% unless current_user == user %>
+  <% if current_user.comment?(message) %>
+    <%= form_for(current_user.comments.find_by(message_id: message.id), html: { method: :delete }) do |f| %>
+      <%= hidden_field_tag :message_id, message.id %>
+      <%= f.submit 'Delete', class: 'btn btn-danger btn-block' %>
+    <% end %>
+  <% else %>
+    <%= form_for(current_user.comments.build) do |f| %>
+      <%= hidden_field_tag :message_id, message.id %>
+        <div class="group-form">
+          <%= f.text_area :content, class: 'form-control', rows: 5 %>
+        </div>
+      <%= f.submit 'Reply', class: 'btn btn-primary btn-block' %>
+    <% end %>
+  <% end %>
+<% end %>

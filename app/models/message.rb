@@ -4,11 +4,11 @@ class Message < ApplicationRecord
         
     validates :content, presence: true, length: {maximum: 255}
     validates :title, presence: true, length: {maximum: 255}
-    # mount_uploader :photo, PhotoUploader
-    # validate :photo_size
     
     has_many :favorites, foreign_key: 'message_id', dependent: :destroy
     has_many :users, through: :favorites
+    has_many :comments, dependent: :destroy
+    has_many :comments_users, through: :comments, source: :user
     
     def self.search(search)
         if search

@@ -20,6 +20,13 @@
           <% if current_user == message.user %>
             <%= link_to 'Edit', edit_message_path(message), class: 'btn btn-default btn-xs' %>
             <%= link_to 'Delete', message, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
+          <% else %>
+            <%= link_to 'Reply', new_message_comment_path(message), class: 'btn btn-primary btn-xs' %>
+          <% end %>
+        </div>
+        <div>
+          <% message.comments.order(updated_at: :desc).each do |comment| %>
+            <h5><span><%= link_to comment.user.name, comment.user %></span>: <%= comment.content %>: <%= comment.updated_at %> <%= link_to 'Delete', comment, method: :delete if comment.user == current_user %></h5>
           <% end %>
         </div>
       </div>

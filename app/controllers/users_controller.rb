@@ -49,6 +49,12 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
   
+  def comments
+    @user = User.find(params[:id])
+    @comments = @user.messages.page(params[:page])
+    counts(@messages)
+  end
+  
   def followings
     @user = User.find(params[:id])
     @followings = @user.followings.page(params[:page])
@@ -72,5 +78,9 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation,
                                   :speak, :offer, :place, :age)
+  end
+  
+  def comment_params
+    params.require(:comment).permit(:content)
   end
 end
