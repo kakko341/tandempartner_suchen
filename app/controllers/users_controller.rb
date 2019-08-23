@@ -10,6 +10,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @messages = @user.messages.order('created_at DESC').page(params[:page])
     counts(@user)
+    @room_id = talk_room_id(current_user, @user)
+    @talks = Talk.recent_in_room(@room_id)
   end
 
   def new
@@ -71,6 +73,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @favmessages = @user.favmessages.order('created_at DESC').page(params[:page])
     counts(@user)
+  end
+  
+  def talk_room_id(first_user, second_user)
+    first_id = first_user.id.to_i
+    second_id = second_user.id.to_i
+      if first_id < second_id
+        "#{first_user.id}-#{second_user.id}"
+      else
+        "#{second_user.id}-#{first_user.id}"
+      end
   end
   
   private

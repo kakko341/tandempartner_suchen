@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   
   resources :relationships, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
+  
+  mount ActionCable.server => '/cable'
 end

@@ -1,6 +1,24 @@
 <div class="row">
     <aside class="col-xs-6">
         <%= render 'user.info', user: @user %>
+        <% if !current_user?(@user) && logged_in? %>
+          <section class="talk_box">
+            <div id="talks">
+              <%= render @talks %>
+            </div>
+          </section>
+          <script type="text/javascript">
+            var height = 0;
+            $("div.talk").each( function() {
+              height += ($(this).height());
+            });
+            $('section.talk_box').scrollTop(height);
+          </script>
+          <div class="talk_form">
+           <%= render 'talks/talk_form',
+             {from_user: current_user, to_user: @user, room_id: @room_id} %>
+          </div>
+        <% end %>
     </aside>
     <div class="col-xs-6">
         <ul class="nav nav-tabs nav-justified">

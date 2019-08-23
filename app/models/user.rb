@@ -76,4 +76,16 @@ class User < ApplicationRecord
     self.comment_messages.include?(message)
     
   end
+  
+  has_many :from_talks, class_name: "Talk",
+            foreign_key: "from_id", dependent: :destroy
+  has_many :to_talks, class_name: "Talk",
+            foreign_key: "to_id", dependent: :destroy
+  has_many :sent_talks, through: :from_talks, source: :from
+  has_many :received_talks, through: :to_talks, source: :to
+  
+  def send_talk(other_user, room_id, content)
+    from_talks.create!(to_id: other_user.id, room_id: room_id, content: content)
+  end
+
 end

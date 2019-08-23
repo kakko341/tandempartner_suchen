@@ -1,3 +1,23 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+section.talk_box {
+	padding: 10px;
+	border: 1px solid $gray-light;
+	overflow: scroll;
+	#talks{
+		height: 400px;
+	}
+}
+
+div.talk_form {
+	padding-top: 10px;
+}
+
+#talk_sender {
+	font-size: 1.1em;
+}
+
+#talk_content {
+	font-size: 1.0em;
+}
