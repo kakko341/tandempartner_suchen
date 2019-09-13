@@ -4,14 +4,14 @@ class FavoritesController < ApplicationController
   def create
     message = Message.find(params[:message_id])
     current_user.favorite(message)
-    flash[:success] = 'このメッセージをお気に入りしました。'
-    redirect_to message
+    flash[:success] = 'Added to Likelist'
+    redirect_to current_user
   end
 
   def destroy
     message = Message.find(params[:message_id])
     current_user.unfavorite(message)
-    flash[:success] = 'このメッセージのお気に入りを解除しました。'
-    redirect_to message
+    flash[:success] = 'Removed from Likelist'
+    redirect_back(fallback_location: root_url)
   end
 end
