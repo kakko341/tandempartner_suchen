@@ -1,11 +1,11 @@
 <% if current_user.favmessage?(message) %>
   <%= form_for(current_user.favorites.find_by(message_id: message.id), html: { method: :delete }) do |f| %>
     <%= hidden_field_tag :message_id, message.id %>
-    <%= f.submit 'お気に入り解除', class: 'btn btn-danger btn-xs' %>
+    <%= f.submit 'Remove', class: 'btn btn-danger btn-xs' %>
   <% end %>
 <% else %>
   <%= form_for(current_user.favorites.build) do |f| %>
     <%= hidden_field_tag :message_id, message.id %>
-    <%= f.submit 'お気に入り', class: 'btn btn-primary btn-xs' %>
+    <%= f.submit 'Like', class: 'btn btn-primary btn-xs' %>
   <% end %>
 <% end %>

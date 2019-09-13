@@ -1,6 +1,10 @@
-<%= form_tag(users_path, :method => 'get' ) do %>
-  <%= text_field_tag :search, '', placeholder: 'Search' %>
-  <%= submit_tag 'Search', :name => nil %>
-<% end %>
-
-<%= render 'users', users: @users %>
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3">
+    <%= form_tag(users_path, :method => 'get' ) do %>
+      <%= text_field_tag :search, '', placeholder: 'Search for language' %>
+      <%= submit_tag 'Search', :name => nil %>
+    <% end %>
+    
+    <%= render 'users', users: @users %>
+  </div>
+</div>

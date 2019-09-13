@@ -1,20 +1,21 @@
-<div class="panel panel-default">
+<div class="panel panel-info">
     <div class="panel-heading">
         <h2 class="panel-title"><%= @user.name %></h2>
     </div>
     <div class="panel-body">
         <img class="media-object img-rounded img-responsive" src="<%= gravatar_url(@user, { size: 150 }) %>" alt="">
+        <p class="follow_button"><%= render 'relationships/follow_button', user: @user %></p>
     </div>
-    <div>
-        <h3><%= @user.speak %></h3>
-        <h3><%= @user.offer %></h3>
-        <h3><%= @user.place %></h3>
-        <h3><%= @user.age %></h3>
-    </div>
+    <ul class="list-group">
+        <li class="list-group-item"><small>I speak </small><%= @user.speak %></li>
+        <li class="list-group-item"><small>I want to learn </small><%= @user.offer %></li>
+        <li class="list-group-item"><small>I live in </small><%= @user.place %></li>
+        <li class="list-group-item"><small>I'm </small><%= @user.age %></li>
+    </ul>
 </div>
-<% if current_user == @user %>
-    <%= link_to  'New Post', new_message_path, class: 'btn btn-default' %>
-    <%= render 'relationships/follow_button', user: @user %>
-    <%= link_to  'Account delete', @user, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-default' %>
-<% end %>
-<%= render 'relationships/follow_button', user: @user %>
+<section>
+    <% if current_user == @user %>
+        <%= link_to  'New Post', new_message_path, class: 'btn btn-default' %>
+        <%= link_to  'Delete account', @user, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
+    <% end %>
+</section>

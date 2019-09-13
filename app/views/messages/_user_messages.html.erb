@@ -14,15 +14,15 @@
             <% end %>
           <% end %>
           <span class="text-muted"><%= message.created_at %></span>
-          <%= render 'favorites/like_button', message: message %>
-        </div>
-        <div>
-          <% if current_user == message.user %>
-            <%= link_to 'Edit', edit_message_path(message), class: 'btn btn-default btn-xs' %>
-            <%= link_to 'Delete', message, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
-          <% else %>
-            <%= link_to 'Reply', new_message_comment_path(message), class: 'btn btn-primary btn-xs' %>
-          <% end %>
+          <div class="btn-toolbar">
+            <%= render 'favorites/like_button', message: message %>
+            <% if current_user == message.user %>
+              <%= link_to 'Edit', edit_message_path(message), class: 'btn btn-default btn-xs' %>
+              <%= link_to 'Delete', message, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
+            <% else %>
+              <%= link_to 'Reply', new_message_comment_path(message), class: 'btn btn-success btn-xs' %>
+            <% end %>
+          </div>
         </div>
         <div>
           <% message.comments.order(updated_at: :desc).each do |comment| %>

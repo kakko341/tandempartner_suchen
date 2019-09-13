@@ -23,10 +23,10 @@ class MessagesController < ApplicationController
     @message = current_user.messages.build(message_params)
     
     if @message.save
-      flash[:success] = "Messageが正常に投稿されました。"
+      flash[:success] = "Succeeded the post!"
       redirect_to @message
     else
-      flash.now[:danger] = "Messageが投稿されませんでした。"
+      flash.now[:danger] = "Failed to create a post"
       render :new
     end
   end
@@ -37,17 +37,17 @@ class MessagesController < ApplicationController
   def update
     
     if @message.update(message_params)
-      flash[:success] = "Messageが正常に更新されました。"
+      flash[:success] = "Updated the post!"
       redirect_to @message
     else
-      flash.now[:danger] = "Messageが更新されませんでした。"
+      flash.now[:danger] = "Failed to update the post"
       render :edit
     end
   end
 
   def destroy
     @message.destroy
-    flash[:success] = "Messageが削除されました。"
+    flash[:success] = "Deleted the post."
     redirect_to messages_url
   end
   

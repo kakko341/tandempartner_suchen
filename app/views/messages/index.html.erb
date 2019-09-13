@@ -1,9 +1,9 @@
 <% if logged_in? %>
-  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+  <p><%= current_user.name %></p>
 <% else %>
-  <p>メッセージの新規作成は<%= link_to 'ログイン', login_path %><p>
+  <p>Create a new post <%= link_to 'Log in', login_path %><p>
 <% end %>
 
-<h1>メッセージ一覧</h1>
+<h1>Posts</h1>
 
 <%= render 'main', message: @message %>
