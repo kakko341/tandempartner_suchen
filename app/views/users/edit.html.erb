@@ -4,6 +4,10 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
+    
+    <div class="gravatar_edit">
+      <a href="http://gravatar.com/emails" target="_blank"><img class="media-object img-rounded img-responsive" src="<%= gravatar_url(@user, { size: 70 }) %>" alt=""></a>
+    </div>
 
     <%= form_for(@user) do |f| %>
 

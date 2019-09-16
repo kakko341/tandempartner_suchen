@@ -26,7 +26,8 @@
         <%= f.file_field :images, multiple: true, accept: 'image/jpeg,image/gif,image/png' %>
       </div>
       
-      <%= f.submit 'Save', class: 'btn btn-primary' %>
+      <div class="btn-group-1"><%= f.submit 'Save', class: 'btn btn-primary' %></div>
+      <div class="btn-group-2"><%= link_to 'Delete', message, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></div>
       
     <% end %>
     

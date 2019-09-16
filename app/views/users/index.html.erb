@@ -1,10 +1,18 @@
-<div class="row">
-  <div class="col-xs-6 col-xs-offset-3">
-    <%= form_tag(users_path, :method => 'get' ) do %>
-      <%= text_field_tag :search, '', placeholder: 'Search for language' %>
-      <%= submit_tag 'Search', :name => nil %>
-    <% end %>
-    
+<div class="container">
+  <div class="row">
+    <div class="mx-auto">
+      <%= form_tag(users_path, :method => 'get' ) do %>
+        <%= text_field_tag :search, '', placeholder: 'Search for language' %>
+        <%= submit_tag 'Search', :name => nil %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
     <%= render 'users', users: @users %>
+  </div>
+  <div class="row">
+    <div class="mx-auto">
+      <%= paginate @users %>
+    </div>
   </div>
 </div>

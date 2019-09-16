@@ -1,0 +1,4 @@
+<%= link_to new_message_comment_path(message), class: 'btn btn-link btn-xs' do %>
+    <i class="fas fa-comment fa-lg fa-fw"></i>
+<% end %>
+<div><%= message.comments.count %></div>

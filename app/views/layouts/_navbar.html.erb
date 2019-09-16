@@ -1,34 +1,42 @@
-<header>
-  <nav class="navbar navbar-inverse navbar-static-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">Tandempartner Suchen</a>
-      </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <% if logged_in? %>
-            <li><%= link_to 'User', users_path %></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.name %> <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><%= link_to 'My Page', user_path(current_user) %></li>
-                <li><%= link_to 'Setting', edit_user_path(current_user) %></li>
-                <li role="separator" class="divider"></li>
-                <li><%= link_to 'Log out', logout_path, method: :delete %></li>
-              </ul>
-            </li>
-          <% else %>
-            <li><%= link_to 'Sign up', signup_path %></li>
-            <li><%= link_to 'Log in', login_path %></li>
-          <% end %>
-        </ul>
-      </div>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="/"><i class="fas fa-paw fa-lg fa-fw"></i> Tandempartner Suchen</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="navbar-nav navbar-right">
+        <% if logged_in? %>
+          <li class="nav-item">
+            <a class="nav-link" href="/users"><i class="fas fa-users fa-lg fa-fw"></i> All Users</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-lg fa-fw"></i><%= current_user.name %></a>
+            <ul class="dropdown-menu">
+              <li>
+                <%= link_to user_path(current_user) do %>
+                  <i class="far fa-user-circle fa-lg fa-fw"></i> My Page
+                <% end %>
+              </li>
+              <li>
+                <%= link_to edit_user_path(current_user) do %>
+                  <i class="fas fa-cog fa-lg fa-fw"></i> Setting
+                <% end %>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <%= link_to logout_path, method: :delete do %>
+                  <i class="fas fa-sign-out-alt fa-lg fa-fw"></i> Log out
+                <% end %>
+              </li>
+            </ul>
+          </li>
+        <% else %>
+          <li class="nav-item"><a class="nav-link" href="/signup"><i class="far fa-user fa-lg fa-fw"></i>Sign up</a></li>
+          <li class="nav-item"><a class="nav-link" href="/login"><i class="fas fa-sign-in-alt fa-lg fa-fw"></i>Log in</a></li>
+        <% end %>
+      </ul>
     </div>
-  </nav>
-</header>
+  </div>
+</nav>
+

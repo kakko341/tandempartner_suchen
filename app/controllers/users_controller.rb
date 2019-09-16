@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:index, :show, :followers, :followings, :likes,
                                                 :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update]
   
   def index
-    @users = User.all.page(params[:page]).search(params[:search])
+    @users = User.all.page(params[:page]).per(24).search(params[:search])
   end
 
   def show
@@ -94,5 +95,10 @@ class UsersController < ApplicationController
   
   def comment_params
     params.require(:comment).permit(:content)
+  end
+  
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless @user == current_user
   end
 end

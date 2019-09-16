@@ -29,6 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'faker'
 gem 'devise'
 gem 'coffee-script-source', '1.8.0'
+gem 'font-awesome-sass'
 
 # Use ActiveStorage variant
 gem 'mini_magick', '~> 4.8'
