@@ -24,7 +24,7 @@ class MessagesController < ApplicationController
     
     if @message.save
       flash[:success] = "Succeeded the post!"
-      redirect_to @message
+      redirect_to root_url
     else
       flash.now[:danger] = "Failed to create a post"
       render :new
@@ -38,7 +38,7 @@ class MessagesController < ApplicationController
     
     if @message.update(message_params)
       flash[:success] = "Updated the post!"
-      redirect_to @message
+      redirect_to root_url
     else
       flash.now[:danger] = "Failed to update the post"
       render :edit

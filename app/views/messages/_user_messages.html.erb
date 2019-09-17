@@ -26,8 +26,10 @@
           </div>
         </div>
         <div>
-          <% message.comments.order(updated_at: :desc).each do |comment| %>
-            <h5><span><%= link_to comment.user.name, comment.user %></span>: <%= comment.content %>: <%= comment.updated_at %> <%= link_to 'Delete', comment, method: :delete if comment.user == current_user %></h5>
+          <% message.comments.order(updated_at: :asc).each do |comment| %>
+            <h5><span><%= link_to comment.user.name, comment.user %></span>: <%= comment.content %>: <%= comment.updated_at %> 
+              <%= link_to(content_tag(:i, '', class: "fas fa-trash-alt"), comment, method: :delete, data: { confirm: "Are you sure?" })  if comment.user == current_user  %>
+            </h5>
           <% end %>
         </div>
       </div>

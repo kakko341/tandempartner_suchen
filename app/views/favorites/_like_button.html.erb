@@ -1,7 +1,7 @@
 <% if current_user.favmessage?(message) %>
   <%= form_for(current_user.favorites.find_by(message_id: message.id), html: { method: :delete }) do |f| %>
     <%= hidden_field_tag :message_id, message.id %>
-    <%= button_tag type: 'submit', class: 'btn btn-link btn-xs' do %>
+    <%= button_tag type: 'submit', class: 'btn btn-outline-light btn-xs' do %>
       <i class="fas fa-heart fa-lg fa-fw"></i>
     <% end %>
   <% end %>
@@ -9,7 +9,7 @@
 <% else %>
   <%= form_for(current_user.favorites.build) do |f| %>
     <%= hidden_field_tag :message_id, message.id %>
-    <%= button_tag type: 'submit', class: 'btn btn-link btn-xs' do %>
+    <%= button_tag type: 'submit', class: 'btn btn-outline-light btn-xs' do %>
       <i class="far fa-heart fa-lg fa-fw"></i>
     <% end %>
   <% end %>
