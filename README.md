@@ -7,23 +7,23 @@ After creating an account, you can check the members and follow their profiles, 
 
 ![front](https://user-images.githubusercontent.com/32790065/66028657-8c858280-e538-11e9-95fe-0c7b4644fbd6.png)
 
-* System dependencies
+* System dependencies  
 OS:Windows10  
 Text Editor:Atom  
 IDE:Cloud9  
  
-* Dependencies
+* Dependencies  
 Ruby 2.6.3  
 Ruby on Rails 5.2.3  
 
-* Gems
+* Gems  
 Unit/Join Testing (RSpec, factory_bot, capybara)  
 Database (MySQL)  
 Upload Pictures (Amason S3, Mini_Magick, aws-fog)  
 Pagenation (kaminari)  
 Design(Bootstrap4, Font Awesome)  
 
-* Funktions
+* Funktions  
 Search engine  
 Login & Logout  
 Follow & Follower 
@@ -32,7 +32,7 @@ Favorite
 Reply  
 Delete the account  
 
-* References
+* References  
 Ruby on Rails Tutorial  
 Every day Rspec  
 Udemy  
