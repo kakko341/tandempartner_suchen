@@ -23,7 +23,7 @@ Upload Pictures (Amason S3, Mini_Magick, aws-fog)
 Pagenation (kaminari)  
 Design(Bootstrap4, Font Awesome)  
 
-* Funktions  
+* Functions  
 Search engine  
 Login & Logout  
 Follow & Follower 
