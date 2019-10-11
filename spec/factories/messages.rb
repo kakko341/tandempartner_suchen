@@ -1,7 +1,7 @@
 FactoryBot.define do
-  factory :comment do
+  factory :message do
+    title { "sample" }
   	content { "sample@content" }
   	association :user
-  	association :message
   end
 end
