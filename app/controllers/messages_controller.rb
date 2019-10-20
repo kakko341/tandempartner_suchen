@@ -40,6 +40,7 @@ class MessagesController < ApplicationController
       flash[:success] = "Updated the post!"
       redirect_to root_url
     else
+      @feed_items = []
       flash.now[:danger] = "Failed to update the post"
       render :edit
     end
