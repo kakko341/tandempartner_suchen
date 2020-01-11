@@ -34,6 +34,8 @@ gem 'font-awesome-sass'
 # Use ActiveStorage variant
 gem 'mini_magick', '~> 4.8'
 gem "aws-sdk-s3", require: false 
+gem 'cloudinary', require: false
+gem 'activestorage-cloudinary-service'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
