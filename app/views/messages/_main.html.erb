@@ -19,7 +19,7 @@
               <p><%= message.content %></p>
               <% if message.images.attached? %>
                 <% message.images.each do |image| %>
-                  <%= image_tag image.variant(resize: "250x250") %> <br>
+                  <%= image_tag image, size: '350x350' %> <br>
                 <% end %>
               <% end %>
             <span class="text-muted"><%= message.created_at %></span>

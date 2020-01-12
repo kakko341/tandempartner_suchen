@@ -49,7 +49,7 @@ class MessagesController < ApplicationController
   def destroy
     @message.destroy
     flash[:success] = "Deleted the post."
-    redirect_to messages_url
+    redirect_to users_url
   end
   
   private
